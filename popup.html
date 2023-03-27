@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --primary: #51a938;
+    }
+
+    body {
+      width: 300px;
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      color: #222;
+      box-sizing: border-box;
+      font-size: 13px;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .main {
+      padding: 16px;
+    }
+
+    input {
+      width: 100%;
+      height: 36px;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid #ccc;
+      background: rgb(247, 247, 247);
+      margin-top: 10px;
+    }
+
+    input:focus {
+      border: 1px solid var(--primary);
+      outline: 0;
+    }
+
+    #submit-btn {
+      margin: 0 auto;
+      margin-top: 20px;
+      width: 100px;
+      height: 32px;
+      border-radius: 16px;
+      color: #fff;
+      text-align: center;
+      line-height: 32px;
+      background: var(--primary);
+      transition: all .3s;
+      cursor: pointer;
+    }
+
+    #submit-btn:hover {
+      filter: brightness(0.9);
+    }
+
+    .switch {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      border-radius: 12px;
+      background: #f0f2f5;
+      border: 2px solid #f0f2f5;
+      transition: all .2s;
+      box-sizing: content-box;
+      cursor: pointer;
+    }
+
+    .switch span {
+      position: absolute;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px 0 rgb(0 0 0 / 16%);
+      background: #fff;
+      transition: all .2s;
+    }
+
+    .switch:active span {
+      width: 26px;
+    }
+
+    .switch.open {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .switch.open span {
+      left: calc(100% - 20px);
+    }
+
+    .switch.open:active span {
+      left: calc(100% - 26px);
+    }
+
+    .flex-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div style="display: none;" id="empty-tip">前往<a href="http://fanyi-api.baidu.com/"
+        target="_blank">百度翻译开放平台</a>申请通用翻译服务来获取 APP ID 和密钥</div>
+    <div style="display: none;" id="edit-tip">
+      <div class="flex-box">
+        <a id="edit-btn">重新填写</a>
+        <div class="switch open" id="toggle-open"><span></span></div>
+      </div>
+    </div>
+    <input id="app-id" placeholder="APP ID" />
+    <input id="secret-key" placeholder="密钥" />
+    <div style="display: none;" id="submit-btn">保存</div>
+  </div>
+  <script src="./popup.js"></script>
+</body>
+
+</html>

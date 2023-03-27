@@ -1,0 +1,23 @@
+#et-line {
+  all: unset;
+  position: fixed;
+  display: none;
+  z-index: 999999999;
+  height: 1px;
+  background: #ddd;
+}
+#et-content {
+  all: unset;
+  position: fixed;
+  display: none;
+  z-index: 999999999;
+  padding: 4px 6px;
+  line-height: 1.5;
+  text-align: justify;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  max-width: 400px;
+  font-weight: normal;
+}
