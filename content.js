@@ -60,6 +60,9 @@ const createTrans = () => {
   content.addEventListener('mouseup', (e) => {
     e.stopPropagation()
   })
+  content.addEventListener('dblclick', (e) => {
+    e.stopPropagation()
+  })
   document.body.appendChild(content)
 }
 const updateTrans = ({ target, translation, type }) => {
@@ -172,8 +175,6 @@ document.addEventListener('mouseup', () => {
 })
 // 双击选择文本
 document.addEventListener('dblclick', (e) => {
-  // 阻止事件冒泡（可选）
-  e.preventDefault();
   handleSelection()
 });
 window.addEventListener('scroll', () => {
