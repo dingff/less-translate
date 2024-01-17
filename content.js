@@ -175,6 +175,7 @@ document.addEventListener('mouseup', () => {
 })
 // 双击选择文本
 document.addEventListener('dblclick', (e) => {
+  if (!isOpen) return
   handleSelection()
 });
 window.addEventListener('scroll', () => {
