@@ -149,11 +149,8 @@ document.addEventListener('mousedown', () => {
   isSelecting = true
   hideTrans()
 })
-// 选择文本后提示
-document.addEventListener('mouseup', () => {
-  if (!isOpen) return
-  isSelecting = false
-  if (Date.now() - selectStartTime < 500) return
+// 处理选中文本
+const handleSelection = () => {
   const selection = getSelection();
   const q = selection.toString();
   if (!q) return;
@@ -165,7 +162,20 @@ document.addEventListener('mouseup', () => {
       updateTrans({ target: selection.getRangeAt(0), translation: v })
     })
   }
+}
+// 选择文本后提示
+document.addEventListener('mouseup', () => {
+  if (!isOpen) return
+  isSelecting = false
+  if (Date.now() - selectStartTime < 500) return
+  handleSelection()
 })
+// 双击选择文本
+document.addEventListener('dblclick', (e) => {
+  // 阻止事件冒泡（可选）
+  e.preventDefault();
+  handleSelection()
+});
 window.addEventListener('scroll', () => {
   if (transVisible) hideTrans();
 })
