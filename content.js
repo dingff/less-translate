@@ -54,6 +54,12 @@ const createTrans = () => {
   document.body.appendChild(line)
   content = document.createElement('s')
   content.id = 'et-content';
+  content.addEventListener('mousedown', (e) => {
+    e.stopPropagation()
+  })
+  content.addEventListener('mouseup', (e) => {
+    e.stopPropagation()
+  })
   document.body.appendChild(content)
 }
 const updateTrans = ({ target, translation, type }) => {
@@ -151,9 +157,14 @@ document.addEventListener('mouseup', () => {
   const selection = getSelection();
   const q = selection.toString();
   if (!q) return;
-  getTranslation(q).then((v) => {
-    updateTrans({ target: selection.getRangeAt(0), translation: v })
-  })
+  // 判断是否是时间戳
+  if (isTimestamp(q)) {
+    updateTrans({ target: selection.getRangeAt(0), translation: timestampToDateTimeString(q) })
+  } else {
+    getTranslation(q).then((v) => {
+      updateTrans({ target: selection.getRangeAt(0), translation: v })
+    })
+  }
 })
 window.addEventListener('scroll', () => {
   if (transVisible) hideTrans();
