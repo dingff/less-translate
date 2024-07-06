@@ -5,10 +5,10 @@ let content
 let dic = new Map()
 let user = {}
 let isOpen = true // 扩展是否启用
-chrome.storage.sync.get('user', (res) => {
+chrome.storage.local.get('user', (res) => {
   user = res.user
 })
-chrome.storage.sync.get('isOpen', (res) => {
+chrome.storage.local.get('isOpen', (res) => {
   isOpen = res.isOpen
 })
 chrome.storage.onChanged.addListener((changes, namespace) => {

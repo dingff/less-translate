@@ -48,7 +48,7 @@ submitBtn.onclick = () => {
     handleInputErr(secretKey)
     return
   }
-  chrome.storage.sync.set({ user: {
+  chrome.storage.local.set({ user: {
     appId: appId.value,
     secretKey: secretKey.value
   }}, () => {
@@ -58,7 +58,7 @@ submitBtn.onclick = () => {
 editBtn.onclick = () => {
   startEdit()
 }
-chrome.storage.sync.get('user', (res) => {
+chrome.storage.local.get('user', (res) => {
   const user = res.user
   if (user?.appId) {
     appId.value = user.appId
@@ -68,7 +68,7 @@ chrome.storage.sync.get('user', (res) => {
     startEdit()
   }
 })
-chrome.storage.sync.get('isOpen', (res) => {
+chrome.storage.local.get('isOpen', (res) => {
   if (res.isOpen) {
     toggleOpen.classList.add('open')
   } else {
@@ -78,5 +78,5 @@ chrome.storage.sync.get('isOpen', (res) => {
 toggleOpen.onclick = () => {
   toggleOpen.classList.toggle('open')
   const isOpen = toggleOpen.classList.contains('open');
-  chrome.storage.sync.set({ isOpen }, () => {});
+  chrome.storage.local.set({ isOpen }, () => {});
 }
